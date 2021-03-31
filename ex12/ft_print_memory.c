@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 22:39:05 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/03/31 14:57:13 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:33:25 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ void	*ft_print_memory(void *addr, unsigned int size)
 		print_memory(addr);
 		print_hex(addr, size);
 		print_str(addr, size);
+		write(1, "\n", 1);
 	}
 	return (addr);
 }

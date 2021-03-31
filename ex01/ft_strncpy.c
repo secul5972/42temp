@@ -6,13 +6,13 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 16:42:15 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/03/31 09:50:50 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:35:10 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	int i;
+	unsigned int i;
 
 	i = 0;
 	while (src[i] != '\0')
