@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/29 22:39:05 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/03/31 16:33:25 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/03/31 20:41:29 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,12 @@ void	print_str(void *addr, unsigned int size)
 	str = (char *)addr;
 	while (i < size)
 	{
-		if (str[i] == 127 || str[i] < 32)
+		if (32 <= str[i] && str[i] <= 126)
 		{
-			write(1, ".", 1);
+			write(1, str + i, 1);
 		}
 		else
-			write(1, str + i, 1);
+			write(1, ".", 1);
 		i++;
 	}
 }
