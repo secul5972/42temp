@@ -1,5 +1,0 @@
-/home/seungcoh/바탕화면/doing/42temp/ft_printf/build/CMakeFiles/edit_cache.dir
-/home/seungcoh/바탕화면/doing/42temp/ft_printf/build/CMakeFiles/rebuild_cache.dir
-/home/seungcoh/바탕화면/doing/42temp/ft_printf/build/CMakeFiles/package.dir
-/home/seungcoh/바탕화면/doing/42temp/ft_printf/build/CMakeFiles/package_source.dir
-/home/seungcoh/바탕화면/doing/42temp/ft_printf/build/CMakeFiles/ft_printf.dir

@@ -6,13 +6,13 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 12:15:48 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/23 20:11:39 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/23 20:49:21 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void check_flag(const char **format, va_list ap, t_cond *status)
+void check_flag(const char **format, t_cond *status)
 {
 	while (**format == '0' || **format == '-')
 	{
@@ -83,15 +83,17 @@ void check_precision(const char **format, va_list ap, t_cond *status)
 char	*check_specifier(const char **format, va_list ap, t_cond *status)
 {
 	char	*ret;
-	int		offset;
-	int		width;
 
 	if (**format == 'c')
 		ret = print_c(ap, status);
 	else if (**format == 's')
 		ret = print_s(ap, status);
-	else if (**format == 'd' || **format == 'i' || **format == 'u' || **format == 'x' || **format == 'X'\
-	|| **format == 'p')
+	else if (**format == 'd' || **format == 'i' || **format == 'u' || **format == 'x' || **format == 'X')
+	{
+		status->spec = **format;
+		ret = print_diuxp(ap, status);
+	}
+	else if(**format == 'p')
 	{
 		status->spec = **format;
 		status->hex_flag = 2;

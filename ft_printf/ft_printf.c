@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 11:37:42 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/23 20:12:35 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/23 20:30:53 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ char	*check_ap(const char **format, va_list ap, t_cond *status)
 		(*format)++;
 		return (ret);
 	}
-	check_flag(format, ap, status);
+	check_flag(format, status);
 	check_width(format, ap, status);
 	check_precision(format, ap, status);
 	return (check_specifier(format, ap, status));
