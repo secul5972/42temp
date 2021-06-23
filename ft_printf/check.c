@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 12:15:48 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/22 22:16:29 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/23 16:02:43 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,11 @@ void check_width(const char **format, va_list ap, t_cond *status)
 		val = va_arg(ap, int);
 		if (val < 0)
 		{
-			status->align = 2;
+			status->flag |= (1 << 1);
 			val = -val;
 		}
 		status->width = val;
+		(*format)++;
 		return ;
 	}
 	val = 0;
@@ -77,24 +78,23 @@ void check_precision(const char **format, va_list ap, t_cond *status)
 	}
 	if (m_flag == 1)
 		val = -val;
-	status->precision = val >= 0? val : -1;
+	status->prec = val >= 0? val : -1;
 }
 
 char	*check_specifier(const char **format, va_list ap, t_cond *status)
 {
-	char *ret;
+	char	*ret;
+	int		offset;
+	int		width;
 
-	switch(**format)
+	if (**format == 'c')
+		ret = print_c(ap, status, offset, width);
+	else if (**format == 's')
+		ret = print_s(ap, status, offset, width);
+	else if (**format == 'd' || **format == 'i' || **format == 'u' || **format == 'x')
 	{
-	case 'c': ret = print_c(ap, status); break;
-	case 's': ret = print_s(ap, status); break;
-	case 'p': break;
-	case 'd': break;
-	case 'i': break;
-	case 'u': break;
-	case 'x': break;
-	case 'X': break;
-	default : break;
+		status->spec = **format;
+		ret = print_diux(ap, status, offset, width);
 	}
 	(*format)++;
 	return (ret);

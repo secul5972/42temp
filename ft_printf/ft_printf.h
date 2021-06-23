@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 11:38:13 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/22 21:41:12 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/23 16:03:00 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,23 +20,30 @@
 typedef struct	s_cond
 {
 	int			flag;
-	int			align;
 	long		width;
-	long		precision;
+	long		prec;
+	char		spec;
 
 }				t_cond;
 
 int		ft_strlen(const char *str);
-int		ft_max(const int a, const int b);
-int		ft_min(const int a, const int b);
+int		ft_max(const long a, const long b);
+int		ft_min(const long a, const long b);
+
+static	long	ft_abs(long n);
+static	void	fill_num(int size, char *ret, long temp, int m_flag);
+char	*ft_itoa(long n);
 
 void	check_flag(const char **format, va_list ap, t_cond *status);
 void	check_width(const char **format, va_list ap, t_cond *status);
 void	check_precision(const char **format, va_list ap, t_cond *status);
 char	*check_specifier(const char **format, va_list ap, t_cond *status);
 
-char	*print_c(va_list ap, t_cond *status);
-char	*print_s(va_list ap, t_cond *status);
+char	*print_c(va_list ap, t_cond *status, int offset, int width);
+char	*print_s(va_list ap, t_cond *status, int offset, int width);
+char	*get_c_arr(va_list ap, char spec);
+char	*print_diux(va_list ap, t_cond *status, int offset, int width);
+
 
 int	ft_printf(const char *format, ...);
 

@@ -16,6 +16,11 @@
 },
 {
   "directory": "/home/seungcoh/바탕화면/doing/42temp/ft_printf/build",
+  "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/ft_printf.dir/ft_printf_utils2.c.o   -c /home/seungcoh/바탕화면/doing/42temp/ft_printf/ft_printf_utils2.c",
+  "file": "/home/seungcoh/바탕화면/doing/42temp/ft_printf/ft_printf_utils2.c"
+},
+{
+  "directory": "/home/seungcoh/바탕화면/doing/42temp/ft_printf/build",
   "command": "/bin/x86_64-linux-gnu-gcc-9   -g   -o CMakeFiles/ft_printf.dir/main.c.o   -c /home/seungcoh/바탕화면/doing/42temp/ft_printf/main.c",
   "file": "/home/seungcoh/바탕화면/doing/42temp/ft_printf/main.c"
 },

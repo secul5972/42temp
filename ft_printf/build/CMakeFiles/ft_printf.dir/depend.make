@@ -10,6 +10,9 @@ CMakeFiles/ft_printf.dir/ft_printf.c.o: ../ft_printf.h
 CMakeFiles/ft_printf.dir/ft_printf_utils.c.o: ../ft_printf.h
 CMakeFiles/ft_printf.dir/ft_printf_utils.c.o: ../ft_printf_utils.c
 
+CMakeFiles/ft_printf.dir/ft_printf_utils2.c.o: ../ft_printf.h
+CMakeFiles/ft_printf.dir/ft_printf_utils2.c.o: ../ft_printf_utils2.c
+
 CMakeFiles/ft_printf.dir/main.c.o: ../ft_printf.h
 CMakeFiles/ft_printf.dir/main.c.o: ../main.c
 

@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 11:37:42 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/22 22:13:14 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/23 16:01:12 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void	init(t_cond *status)
 {
 	status->flag = 0;
-	status->align = 0;
-	status->precision = 2147483647;
+	status->spec = 0;
+	status->prec = 2147483648;
 	status->width = -1;
 }
 
@@ -41,7 +41,8 @@ int	print_format(const char **format, va_list ap)
 		if (**format == '%')
 		{
 			prt = print_ap(format, ap, &status);
-			write(1, prt, (ret += ft_strlen(prt)));
+			write(1, prt, (len = ft_strlen(prt)));
+			ret += len;
 			free(prt);
 		}
 		else

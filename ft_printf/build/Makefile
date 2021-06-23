@@ -226,6 +226,33 @@ ft_printf_utils.c.s:
 	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/ft_printf_utils.c.s
 .PHONY : ft_printf_utils.c.s
 
+ft_printf_utils2.o: ft_printf_utils2.c.o
+
+.PHONY : ft_printf_utils2.o
+
+# target to build an object file
+ft_printf_utils2.c.o:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/ft_printf_utils2.c.o
+.PHONY : ft_printf_utils2.c.o
+
+ft_printf_utils2.i: ft_printf_utils2.c.i
+
+.PHONY : ft_printf_utils2.i
+
+# target to preprocess a source file
+ft_printf_utils2.c.i:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/ft_printf_utils2.c.i
+.PHONY : ft_printf_utils2.c.i
+
+ft_printf_utils2.s: ft_printf_utils2.c.s
+
+.PHONY : ft_printf_utils2.s
+
+# target to generate assembly for a file
+ft_printf_utils2.c.s:
+	$(MAKE) -f CMakeFiles/ft_printf.dir/build.make CMakeFiles/ft_printf.dir/ft_printf_utils2.c.s
+.PHONY : ft_printf_utils2.c.s
+
 main.o: main.c.o
 
 .PHONY : main.o
@@ -300,6 +327,9 @@ help:
 	@echo "... ft_printf_utils.o"
 	@echo "... ft_printf_utils.i"
 	@echo "... ft_printf_utils.s"
+	@echo "... ft_printf_utils2.o"
+	@echo "... ft_printf_utils2.i"
+	@echo "... ft_printf_utils2.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

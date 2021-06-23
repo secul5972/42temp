@@ -2,6 +2,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/ft_printf.dir/check.c.o"
   "CMakeFiles/ft_printf.dir/ft_printf.c.o"
   "CMakeFiles/ft_printf.dir/ft_printf_utils.c.o"
+  "CMakeFiles/ft_printf.dir/ft_printf_utils2.c.o"
   "CMakeFiles/ft_printf.dir/main.c.o"
   "CMakeFiles/ft_printf.dir/print.c.o"
   "ft_printf"
