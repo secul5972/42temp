@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 11:38:13 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/23 16:03:00 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/23 16:22:38 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ int		ft_max(const long a, const long b);
 int		ft_min(const long a, const long b);
 
 static	long	ft_abs(long n);
-static	void	fill_num(int size, char *ret, long temp, int m_flag);
-char	*ft_itoa(long n);
+static	char	*fill_num(int size, long temp, int m_flag, int digit);
+char	*ft_itoa(long n, int digit, int ul_flag);
 
 void	check_flag(const char **format, va_list ap, t_cond *status);
 void	check_width(const char **format, va_list ap, t_cond *status);

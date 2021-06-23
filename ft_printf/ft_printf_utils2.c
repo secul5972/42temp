@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/23 13:57:25 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/23 15:01:45 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/23 16:41:53 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,34 @@ static	long	ft_abs(long n)
 	return (n);
 }
 
-static	void	fill_num(int size, char *ret, long temp, int m_flag)
+static	char	*fill_num(int size, long temp, int m_flag, int digit)
 {
+	char	*ret;
+	int		val;
+
+	if (!(ret = (char*)malloc(sizeof(char) * (size + 1))))
+		return (0);
 	ret[size--] = 0;
 	while (size - m_flag >= 0)
 	{
-		ret[size--] = temp % 10 + '0';
-		temp /= 10;
+		val = temp % digit;
+		if((val = temp % digit + '0') > 9 + '0')
+			val += 'a' - 10 - '0';
+		ret[size--] = val;
+		temp /= digit;
 	}
 	if (m_flag == 1)
 		ret[0] = '-';
+	return (ret);
 }
 
-char			*ft_itoa(long n)
+char			*ft_itoa(long n, int digit, int ul_flag)
 {
 	int		m_flag;
 	int		size;
 	char	*ret;
 	long	temp;
+	int		i;
 
 	temp = n;
 	m_flag = 0;
@@ -46,11 +56,14 @@ char			*ft_itoa(long n)
 		m_flag = 1;
 		temp *= -1;
 	}
-	while (temp /= 10)
+	while (temp /= digit)
 		size++;
 	temp = ft_abs(n);
-	if (!(ret = (char*)malloc(sizeof(char) * (size + 1 + m_flag))))
-		return (0);
-	fill_num(size + m_flag, ret, temp, m_flag);
+	ret = fill_num(size + m_flag, temp, m_flag, digit);
+	i = -1;
+	if (ul_flag > 0)
+		while (++i < size)
+			if ('a' <= ret[i] && ret[i] <= 'f')
+				ret[i] -= 32;
 	return (ret);
 }

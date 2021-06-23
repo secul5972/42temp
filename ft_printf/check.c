@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 12:15:48 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/23 16:02:43 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/23 16:34:40 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ char	*check_specifier(const char **format, va_list ap, t_cond *status)
 		ret = print_c(ap, status, offset, width);
 	else if (**format == 's')
 		ret = print_s(ap, status, offset, width);
-	else if (**format == 'd' || **format == 'i' || **format == 'u' || **format == 'x')
+	else if (**format == 'd' || **format == 'i' || **format == 'u' || **format == 'x' || **format == 'X')
 	{
 		status->spec = **format;
 		ret = print_diux(ap, status, offset, width);

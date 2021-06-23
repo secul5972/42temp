@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:17:22 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/23 16:03:46 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/23 16:44:47 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,9 +61,11 @@ char	*print_s(va_list ap, t_cond *status, int offset, int width)
 char	*get_c_arr(va_list ap, char spec)
 {
 	if (spec == 'd' || spec == 'i')
-		return (ft_itoa(va_arg(ap, int)));
-	else if(spec == 'u' || spec == 'x')
-		return (ft_itoa(va_arg(ap, unsigned int)));
+		return (ft_itoa(va_arg(ap, int), 10, 0));
+	else if(spec == 'u')
+		return (ft_itoa(va_arg(ap, unsigned int), 10, 0));
+	else if(spec == 'x' || spec == 'X')
+		return (ft_itoa(va_arg(ap, unsigned int), 16, 'x' - spec));
 	else
 		return (0);
 }

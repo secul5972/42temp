@@ -18,7 +18,7 @@ int main(){
 	printf("[%0c]sdfsdf[%03.4s]dfdfsdf\n",c,s);
 	ft_printf("[%0c]sdfsdf[%03.4s]dfdfsdf\n",c,s);*/
 
-	printf("ddfsd[%10.3d]k\n", 2000);
+	/*printf("ddfsd[%10.3d]k\n", 2000);
 	ft_printf("ddfsd[%10.3d]k\n", 2000);
 	printf("ddfsd[%10.5d]k\n", 200);
 	ft_printf("ddfsd[%10.5d]k\n", 200);
@@ -42,8 +42,10 @@ int main(){
 	printf("ddfsd[%*.2u]u\n", 10, 200);
 	ft_printf("ddfsd[%*.2u]u\n", 10,200);
 	printf("ddfsd[%*.5u]u\n", 10, 200);
-	ft_printf("ddfsd[%*.5u]u\n", 10,200);
+	ft_printf("ddfsd[%*.5u]u\n", 10,200);*/
 
-	//printf("x[%-*.5x]x\n", 10, 200);
-
+	printf("x[%-*.10x]x\n", 20, 123456789);
+	ft_printf("x[%-*.10x]x\n", 20, 123456789);
+	printf("x[%-*.10X]X\n", 20, 123456789);
+	ft_printf("x[%-*.10X]X\n", 20, 123456789);
 }
