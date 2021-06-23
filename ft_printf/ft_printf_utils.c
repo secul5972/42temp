@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 20:42:58 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/23 15:57:00 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/23 17:30:03 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_strlen(const char *str)
 	int i;
 
 	if (!str)
-		return (-1);
+		return (0);
 	i = 0;
 	while (str[i])
 		i++;

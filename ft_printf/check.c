@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 12:15:48 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/23 16:34:40 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/23 20:11:39 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void check_flag(const char **format, va_list ap, t_cond *status)
 {
-	(*format)++;
 	while (**format == '0' || **format == '-')
 	{
 		if (**format == '0')
@@ -88,13 +87,15 @@ char	*check_specifier(const char **format, va_list ap, t_cond *status)
 	int		width;
 
 	if (**format == 'c')
-		ret = print_c(ap, status, offset, width);
+		ret = print_c(ap, status);
 	else if (**format == 's')
-		ret = print_s(ap, status, offset, width);
-	else if (**format == 'd' || **format == 'i' || **format == 'u' || **format == 'x' || **format == 'X')
+		ret = print_s(ap, status);
+	else if (**format == 'd' || **format == 'i' || **format == 'u' || **format == 'x' || **format == 'X'\
+	|| **format == 'p')
 	{
 		status->spec = **format;
-		ret = print_diux(ap, status, offset, width);
+		status->hex_flag = 2;
+		ret = print_diuxp(ap, status);
 	}
 	(*format)++;
 	return (ret);
