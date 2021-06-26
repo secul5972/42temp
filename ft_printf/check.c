@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seungcoh <seungcoh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 12:15:48 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/23 20:49:21 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/26 16:28:39 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void check_flag(const char **format, t_cond *status)
+void	check_flag(const char **format, t_cond *stat)
 {
 	while (**format == '0' || **format == '-')
 	{
 		if (**format == '0')
-			status->flag |= (1 << 0);
+			stat->flag |= (1 << 0);
 		if (**format == '-')
-			status->flag |= (1 << 1);
+			stat->flag |= (1 << 1);
 		(*format)++;
 	}
 }
 
-void check_width(const char **format, va_list ap, t_cond *status)
+void	check_width(const char **format, va_list ap, t_cond *stat)
 {
 	long	val;
 
@@ -33,10 +33,10 @@ void check_width(const char **format, va_list ap, t_cond *status)
 		val = va_arg(ap, int);
 		if (val < 0)
 		{
-			status->flag |= (1 << 1);
+			stat->flag |= (1 << 1);
 			val = -val;
 		}
-		status->width = val;
+		stat->width = val;
 		(*format)++;
 		return ;
 	}
@@ -47,16 +47,16 @@ void check_width(const char **format, va_list ap, t_cond *status)
 		val += **format - '0';
 		(*format)++;
 	}
-	status->width = val;
+	stat->width = val;
 }
 
-void check_precision(const char **format, va_list ap, t_cond *status)
+void	check_precision(const char **format, va_list ap, t_cond *stat)
 {
-	int		m_flag;
 	long	val;
+	int		m_flag;
 
-	m_flag = 0;
 	val = 0;
+	m_flag = 0;
 	if (**format != '.')
 		return ;
 	(*format)++;
@@ -67,38 +67,40 @@ void check_precision(const char **format, va_list ap, t_cond *status)
 	}
 	else if (**format == '-')
 	{
-		m_flag = 1;
 		(*format)++;
+		m_flag = 1;
 	}
 	while ('0' <= **format && **format <= '9')
 	{
 		val *= 10;
 		val += *(*format)++ - '0';
 	}
-	if (m_flag == 1)
-		val = -val;
-	status->prec = val >= 0? val : -1;
+	stat->prec = (val >= 0 && !m_flag) ? val : 2147483648;
 }
 
-char	*check_specifier(const char **format, va_list ap, t_cond *status)
+char	*check_specifier(const char **format, va_list ap, t_cond *stat)
 {
 	char	*ret;
 
-	if (**format == 'c')
-		ret = print_c(ap, status);
+	ret = 0;
+	if (**format == 'c' || **format == '%')
+		ret = print_cpe(ap, stat, (int)('c' - **format));
 	else if (**format == 's')
-		ret = print_s(ap, status);
-	else if (**format == 'd' || **format == 'i' || **format == 'u' || **format == 'x' || **format == 'X')
+		ret = print_s(ap, stat);
+	else if (**format == 'd' || **format == 'i' || **format == 'u' \
+	|| **format == 'x' || **format == 'X')
 	{
-		status->spec = **format;
-		ret = print_diuxp(ap, status);
+		stat->spec = **format;
+		ret = print_diuxp(ap, stat);
 	}
-	else if(**format == 'p')
+	else if (**format == 'p')
 	{
-		status->spec = **format;
-		status->hex_flag = 2;
-		ret = print_diuxp(ap, status);
+		stat->spec = **format;
+		stat->h_flag = 2;
+		ret = print_diuxp(ap, stat);
 	}
+	else
+		return (ret);
 	(*format)++;
 	return (ret);
 }
