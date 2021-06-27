@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: seungcoh <seungcoh@student.42.fr>          +#+  +:+       +#+         #
+#    By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/11 19:20:46 by seungcoh          #+#    #+#              #
-#    Updated: 2021/06/26 16:45:04 by seungcoh         ###   ########.fr        #
+#    Updated: 2021/06/27 23:47:20 by seungcoh         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,3 +38,5 @@ fclean: 	clean
 			$(RM) $(NAME)
 
 re:			fclean all
+
+.PHONY:		all clean fclean re
