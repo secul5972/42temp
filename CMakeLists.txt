@@ -8,6 +8,6 @@ project(${ProjectId})
 
 set (CMAKE_CXX_STANDARD 11)
 
-file(GLOB SOURCES  get_next_line.c get_next_line_utils.c get_next_line.h main.c)
+file(GLOB SOURCES *.c *.h)
 
 add_executable(${PROJECT_NAME} ${SOURCES} )
