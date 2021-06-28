@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_cpes.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungcoh <seungcoh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 16:42:45 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/28 18:42:21 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/28 21:51:08 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ static	char	*s_check_null(va_list ap, char **temp)
 	s = 0;
 	if (!(s = va_arg(ap, char *)))
 	{
-		s = ft_strdup("(null)");
+		if(!(s = ft_strdup("(null)")))
+			return (0);
 		*temp = s;
 	}
 	return (s);
@@ -58,7 +59,8 @@ char			*print_s(va_list ap, t_cond *stat)
 	char	*temp;
 	t_idx	idx;
 
-	s = s_check_null(ap, &temp);
+	if(!(s = s_check_null(ap, &temp)))
+		return (0);
 	idx.len = ft_strlen(s);
 	idx.prec = ft_min(idx.len, stat->prec);
 	idx.width = ft_max(stat->width, idx.prec);

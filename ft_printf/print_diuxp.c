@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_diuxp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungcoh <seungcoh@student.42.fr>          +#+  +:+       +#+        */
+/*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:17:22 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/28 18:25:05 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/28 21:56:50 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ static char	*get_c_arr(va_list ap, t_cond *stat)
 		ret = ft_ntoa(va_arg(ap, unsigned int), 16, stat);
 	else if (stat->spec == 'p')
 		ret = ft_ptoa(va_arg(ap, unsigned long long), 16, stat);
-	if (ret[0] == '0' && ret[1] == 0 && stat->prec == 0)
+	if (ret && ret[0] == '0' && ret[1] == 0 && stat->prec == 0)
 		ret[0] = 0;
-	if ((stat->h_flag == 2) && ret[2] == '0' && (stat->prec == 0))
+	if (ret && (stat->h_flag == 2) && ret[2] == '0' && (stat->prec == 0))
 		ret[2] = 0;
 	return (ret);
 }
@@ -84,7 +84,8 @@ char		*print_diuxp(va_list ap, t_cond *stat)
 	temp = 0;
 	if (stat->prec == 2147483648)
 		stat->prec = -1;
-	ret = flag_cal(ap, stat, &idx, &ch_d);
+	if(!(ret = flag_cal(ap, stat, &idx, &ch_d)))
+		return (0);
 	temp = ch_d;
 	width_c = ((stat->flag & (1 << 0)) && (stat->prec == -1)) ? '0' : ' ';
 	while (idx.i < idx.offset)
