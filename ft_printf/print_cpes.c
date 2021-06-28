@@ -6,13 +6,13 @@
 /*   By: seungcoh <seungcoh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/26 16:42:45 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/26 20:04:02 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/28 18:42:21 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char		*print_cpe(va_list ap, t_cond *stat, int c_flag)
+char			*print_cpe(va_list ap, t_cond *stat, int c_flag)
 {
 	char	c;
 	char	width_c;
@@ -37,15 +37,28 @@ char		*print_cpe(va_list ap, t_cond *stat, int c_flag)
 	return (ret);
 }
 
-char		*print_s(va_list ap, t_cond *stat)
+static	char	*s_check_null(va_list ap, char **temp)
+{
+	char	*s;
+
+	*temp = 0;
+	s = 0;
+	if (!(s = va_arg(ap, char *)))
+	{
+		s = ft_strdup("(null)");
+		*temp = s;
+	}
+	return (s);
+}
+
+char			*print_s(va_list ap, t_cond *stat)
 {
 	char	*s;
 	char	*ret;
+	char	*temp;
 	t_idx	idx;
 
-	s = va_arg(ap, char *);
-	if (!s)
-		s = ft_strdup("(null)");
+	s = s_check_null(ap, &temp);
 	idx.len = ft_strlen(s);
 	idx.prec = ft_min(idx.len, stat->prec);
 	idx.width = ft_max(stat->width, idx.prec);
@@ -60,8 +73,8 @@ char		*print_s(va_list ap, t_cond *stat)
 	while (idx.i < idx.width)
 		ret[idx.i++] = ' ';
 	ret[idx.i] = 0;
-	if (!s)
-		free(s);
+	if (temp)
+		free(temp);
 	stat->width = ft_strlen(ret);
 	return (ret);
 }

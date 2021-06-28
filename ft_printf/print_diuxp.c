@@ -6,7 +6,7 @@
 /*   By: seungcoh <seungcoh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:17:22 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/26 19:50:00 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/28 18:25:05 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,12 +77,15 @@ char		*print_diuxp(va_list ap, t_cond *stat)
 {
 	char	*ret;
 	char	*ch_d;
+	char	*temp;
 	char	width_c;
 	t_idx	idx;
 
+	temp = 0;
 	if (stat->prec == 2147483648)
 		stat->prec = -1;
 	ret = flag_cal(ap, stat, &idx, &ch_d);
+	temp = ch_d;
 	width_c = ((stat->flag & (1 << 0)) && (stat->prec == -1)) ? '0' : ' ';
 	while (idx.i < idx.offset)
 		ret[idx.i++] = width_c;
@@ -92,8 +95,8 @@ char		*print_diuxp(va_list ap, t_cond *stat)
 	while (idx.i < idx.width)
 		ret[idx.i++] = ' ';
 	ret[idx.i] = 0;
-	if (!ch_d)
-		free(ch_d);
+	if (temp)
+		free(temp);
 	stat->width = ft_strlen(ret);
 	return (ret);
 }
