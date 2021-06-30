@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seungcoh <seungcoh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 11:37:42 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/28 21:52:13 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:08:13 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,11 @@ static int		print_format(const char **format, va_list ap)
 		if (**format == '%')
 		{
 			init(&stat);
-			if ((prt = check_ap(format, ap, &stat)))
-			{
-				write(1, prt, stat.width);
-				ret += stat.width;
-				free(prt);
-			}
-			else
+			if (!(prt = check_ap(format, ap, &stat)))
 				return (ret);
+			write(1, prt, stat.width);
+			ret += stat.width;
+			free(prt);
 		}
 		else
 		{

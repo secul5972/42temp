@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_diuxp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: seungcoh <seungcoh@student.42seoul.kr>     +#+  +:+       +#+        */
+/*   By: seungcoh <seungcoh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/22 16:17:22 by seungcoh          #+#    #+#             */
-/*   Updated: 2021/06/28 21:56:50 by seungcoh         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:06:57 by seungcoh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char		*print_diuxp(va_list ap, t_cond *stat)
 	temp = 0;
 	if (stat->prec == 2147483648)
 		stat->prec = -1;
-	if(!(ret = flag_cal(ap, stat, &idx, &ch_d)))
+	if (!(ret = flag_cal(ap, stat, &idx, &ch_d)))
 		return (0);
 	temp = ch_d;
 	width_c = ((stat->flag & (1 << 0)) && (stat->prec == -1)) ? '0' : ' ';
