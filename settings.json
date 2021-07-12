@@ -1,0 +1,13 @@
+{
+	"files.associations": {
+		"array": "c",
+		"string_view": "c",
+		"initializer_list": "c",
+		"utility": "c"
+	}
+	"cmake.debugConfig": {
+        "args": [
+            3 2 1
+        ]
+    }
+}
